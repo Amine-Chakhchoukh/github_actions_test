@@ -30,20 +30,22 @@ jobs:
       run: |
         # $CONDA is an environment variable pointing to the root of the miniconda directory
         $CONDA_EXEC env update --file environment.yml --name base
-      shell: bash
+        $CONDA_EXEC init powershell
     - name: Lint with flake8
       run: |
+        $CONDA_EXEC activate base
         $CONDA_EXEC install flake8
         # stop the build if there are Python syntax errors or undefined names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      shell: bash
+      shell: powershell 
     - name: Test with pytest
       run: |
+        $CONDA_EXEC activate base
         $CONDA_EXEC install pytest
         pytest
-      shell: bash
+      shell: powershell 
 
         #  build-windows:
         #    runs-on: windows-latest
