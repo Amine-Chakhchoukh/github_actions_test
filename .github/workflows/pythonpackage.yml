@@ -19,10 +19,10 @@ jobs:
     - name: Debug
       run: echo "::debug::${{ matrix.os }}"
     - name: Set up Conda (Windows)
-      if: ${{ matrix.os }} == 'windows-latest'
+      if: matrix.os == 'windows-latest'
       run: echo "::set-env name=CONDA_EXEC::C:\Miniconda\condabin\conda.bat"
     - name: Set up Conda (Linux)
-      if: ${{ matrix.os }} != 'windows-latest'
+      if: matrix.os != 'windows-latest'
       run: echo "::set-env name=CONDA_EXEC::${CONDA}/bin/conda"
     - name: Install dependencies
       run: |
