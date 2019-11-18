@@ -22,7 +22,7 @@ jobs:
       run: |
         if [ "${{ matrix.os }}" != "windows-latest" ] 
         then
-          echo '::set-env name=CONDA_EXEC::${CONDA}/bin/conda'
+          echo "::set-env name=CONDA_EXEC::${CONDA}/bin/conda"
         else
           echo '::set-env name=CONDA_EXEC::C:\Miniconda\condabin\conda.bat'
         fi
