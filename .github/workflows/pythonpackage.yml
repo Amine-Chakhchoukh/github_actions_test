@@ -21,11 +21,11 @@ jobs:
     - name: Set up Conda (Windows)
       run: echo '::set-env name=CONDA_EXEC::C:\Miniconda\condabin\conda.bat'
       shell: bash
-      if: $matrix.os == 'windows-latest'
+      if: matrix.os == 'windows-latest'
     - name: Set up Conda (Linux)
       run: echo '::set-env name=CONDA_EXEC::${CONDA}/bin/conda'
       shell: bash
-      if: $matrix.os != 'windows-latest'
+      if: matrix.os != 'windows-latest'
     - name: Install dependencies
       run: |
         # $CONDA is an environment variable pointing to the root of the miniconda directory
