@@ -38,6 +38,7 @@ jobs:
       shell: bash
       run: |
         # Alternative to restarting shell https://github.com/conda/conda/issues/7980#issuecomment-492784093
+        $CONDA_EXEC init bash
         eval "$(conda shell.bash hook)"
         $CONDA_EXEC activate base
         $CONDA_EXEC install flake8
