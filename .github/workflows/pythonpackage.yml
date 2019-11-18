@@ -4,11 +4,12 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 5
       matrix:
         python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
+        os: [windows-latest, ubuntu-latest]
 
     steps:
     - uses: actions/checkout@v1
