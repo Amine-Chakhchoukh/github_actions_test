@@ -19,7 +19,7 @@ jobs:
     - name: Set up Conda
       run: |
         echo ${{ matrix.os }}
-        if [ "{{ matrix.os }}" != "windows-latest" ]; then
+        if ( "{{ matrix.os }}" != "windows-latest" ); then
             echo '::set-env name=CONDA_EXEC::${CONDA}/bin/conda'
           else
             echo '::set-env name=CONDA_EXEC::C:\Miniconda\condabin\conda.bat'
