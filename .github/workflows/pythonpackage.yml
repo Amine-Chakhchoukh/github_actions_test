@@ -20,16 +20,15 @@ jobs:
       run: echo "::debug::${{ matrix.os }}"
     - name: Set up Conda (Windows)
       run: echo "::set-env name=CONDA_EXEC::C:\Miniconda\condabin\conda.bat"
-      shell: bash
       if: ${{ matrix.os }} == 'windows-latest'
     - name: Set up Conda (Linux)
       run: echo "::set-env name=CONDA_EXEC::${CONDA}/bin/conda"
-      shell: bash
       if: ${{ matrix.os }} != 'windows-latest'
     - name: Install dependencies
       run: |
         # $CONDA is an environment variable pointing to the root of the miniconda directory
         $CONDA_EXEC env update --file environment.yml --name base
+      shell: bash
     - name: Lint with flake8
       run: |
         $CONDA_EXEC activate base
@@ -38,10 +37,12 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      shell: bash
     - name: Test with pytest
       run: |
         $CONDA_EXEC install pytest
         pytest
+      shell: bash
 
         #  build-windows:
         #    runs-on: windows-latest
