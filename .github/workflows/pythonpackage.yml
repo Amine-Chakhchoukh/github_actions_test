@@ -22,6 +22,7 @@ jobs:
     - name: Set up Conda (Windows)
       if: matrix.os == 'windows-latest'
       run: echo "::set-env name=CONDA_EXEC::C:\Miniconda\condabin\conda.bat"
+        
     - name: Set up Conda (Linux)
       if: matrix.os != 'windows-latest'
       run: echo "::set-env name=CONDA_EXEC::${CONDA}/bin/conda"
@@ -29,6 +30,7 @@ jobs:
       run: |
         # $CONDA is an environment variable pointing to the root of the miniconda directory
         $CONDA_EXEC env update --file environment.yml --name base
+        $CONDA_EXEC init bash 
       shell: bash
     - name: Lint with flake8
       run: |
