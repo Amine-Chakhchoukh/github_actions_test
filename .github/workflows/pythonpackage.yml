@@ -32,6 +32,8 @@ jobs:
         # $CONDA is an environment variable pointing to the root of the miniconda directory
         $CONDA_EXEC env update --file environment.yml --name base
         $CONDA_EXEC init bash
+        # Add conda info to the path
+        source ~/.bashrc 
     - name: Lint with flake8
       shell: bash
       run: |
