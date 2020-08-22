@@ -2,8 +2,8 @@ on: [push]
 
 jobs:
   miniconda:
-    name: Miniconda ${{ matrix.os }})
-    runs-on: ${{ matrix.os }})
+    name: Miniconda ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
         matrix:
             os: ["ubuntu-latest", "windows-latest"]
