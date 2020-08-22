@@ -1,6 +1,8 @@
+name: Windows test using preinstalled Conda
 on: [push]
 
-build-windows:
+jobs:
+  build-windows:
     runs-on: windows-latest
     strategy:
       max-parallel: 5
