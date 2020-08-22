@@ -1,3 +1,5 @@
+on: [push]
+
 build-windows:
     runs-on: windows-latest
     strategy:
